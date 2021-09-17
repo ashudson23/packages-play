@@ -1,3 +1,5 @@
+const { version } = require('./package.json');
+
 module.exports = () => {
-  console.log('Hello world');
+  return version;
 }
