@@ -1,0 +1,18 @@
+name: Publish Package
+on:
+  push:
+    branches:
+      - master
+jobs:
+  release:
+    name: Publish
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 14
+    - run: 
+        npm ci
+        npm publish --access public
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
